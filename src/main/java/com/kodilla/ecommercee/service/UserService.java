@@ -47,7 +47,7 @@ public class UserService {
             throw new NullValueException();
         }
         User newUser = new User(createUserRequest.username(), createUserRequest.password(), createUserRequest.address());
-        newUser.setUserLocked(false);
+        newUser.setLocked(false);
 
         userRepository.save(newUser);
 
@@ -106,7 +106,7 @@ public class UserService {
         }
 
         if (user.getUsername().equals(lockUserRequest.username()) && user.getPassword().equals(lockUserRequest.password())) {
-            user.setUserLocked(true);
+            user.setLocked(true);
         }
 
         userRepository.save(user);

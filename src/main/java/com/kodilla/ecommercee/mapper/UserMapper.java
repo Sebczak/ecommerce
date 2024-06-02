@@ -18,7 +18,7 @@ public class UserMapper {
                 user.getAddress(),
                 user.getToken(),
                 user.getTokenCreationTime(),
-                user.isUserLocked()
+                user.isLocked()
         );
     }
 
@@ -33,7 +33,7 @@ public class UserMapper {
         return new UserLockedResponse(
                 user.getId(),
                 user.getUsername(),
-                user.isUserLocked()
+                user.isLocked()
         );
     }
 }

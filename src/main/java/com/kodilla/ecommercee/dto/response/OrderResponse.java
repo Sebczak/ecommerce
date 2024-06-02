@@ -1,6 +1,6 @@
 package com.kodilla.ecommercee.dto.response;
 
-import com.kodilla.ecommercee.entity.enums.OrderStatus;
+import com.kodilla.ecommercee.entity.OrderStatus;
 
 import java.math.BigDecimal;
 

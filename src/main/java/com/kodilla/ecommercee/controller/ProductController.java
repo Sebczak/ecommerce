@@ -22,27 +22,27 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<ProductResponse>> getAllProducts(@RequestParam Integer token) {
+    public ResponseEntity<List<ProductResponse>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponse> getProduct(@PathVariable Long id, @RequestParam Integer token) throws ProductNotFoundException {
+    public ResponseEntity<ProductResponse> getProduct(@PathVariable Long id) throws ProductNotFoundException {
         return ResponseEntity.ok(productService.getProduct(id));
     }
 
     @PostMapping
-    public ResponseEntity<ProductResponse> createProduct(@RequestBody CreateProductRequest createProductRequest, @RequestParam Integer token) throws GroupNotFoundException, NullValueException, NegativeValuesException {
+    public ResponseEntity<ProductResponse> createProduct(@RequestBody CreateProductRequest createProductRequest) throws GroupNotFoundException, NullValueException, NegativeValuesException {
         return ResponseEntity.ok(productService.addProduct(createProductRequest));
     }
 
     @PutMapping
-    public ResponseEntity<ProductResponse> updateProduct(@RequestBody UpdateProductRequest updateProductRequest, @RequestParam Integer token) throws ProductNotFoundException, GroupNotFoundException, NullValueException, NegativeValuesException {
+    public ResponseEntity<ProductResponse> updateProduct(@RequestBody UpdateProductRequest updateProductRequest) throws ProductNotFoundException, GroupNotFoundException, NullValueException, NegativeValuesException {
         return ResponseEntity.ok(productService.updateProduct(updateProductRequest));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long id, @RequestParam Integer token) throws ProductNotFoundException {
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) throws ProductNotFoundException {
         productService.deleteProduct(id);
         return ResponseEntity.ok().build();
     }

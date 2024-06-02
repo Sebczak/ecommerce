@@ -7,7 +7,6 @@ import com.kodilla.ecommercee.dto.response.CartResponse;
 import com.kodilla.ecommercee.dto.response.OrderResponse;
 import com.kodilla.ecommercee.dto.response.ProductResponse;
 import com.kodilla.ecommercee.entity.*;
-import com.kodilla.ecommercee.entity.enums.OrderStatus;
 import com.kodilla.ecommercee.exception.CartNotFoundException;
 import com.kodilla.ecommercee.exception.ProductNotFoundException;
 import com.kodilla.ecommercee.exception.UserNotFoundException;

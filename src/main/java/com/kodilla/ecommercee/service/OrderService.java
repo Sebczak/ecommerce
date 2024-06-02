@@ -3,6 +3,7 @@ package com.kodilla.ecommercee.service;
 import com.kodilla.ecommercee.dto.request.UpdateOrderRequest;
 import com.kodilla.ecommercee.dto.response.OrderResponse;
 import com.kodilla.ecommercee.entity.Order;
+import com.kodilla.ecommercee.entity.OrderStatus;
 import com.kodilla.ecommercee.exception.NotEnoughPriceException;
 import com.kodilla.ecommercee.exception.NullValueException;
 import com.kodilla.ecommercee.exception.OrderNotFoundException;
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static com.kodilla.ecommercee.entity.enums.OrderStatus.PAID;
 
 @Service
 @RequiredArgsConstructor
@@ -48,7 +48,7 @@ public class OrderService {
 
 
         if(updateOrderRequest.totalPrice().compareTo(cartTotalPrice) >= 0)
-            order.setStatus(PAID);
+            order.setStatus(OrderStatus.PAID);
 
         if (updateOrderRequest.shippingAddress() != null && !updateOrderRequest.shippingAddress().isEmpty())
             order.setShippingAddress(updateOrderRequest.shippingAddress());

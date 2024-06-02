@@ -34,10 +34,13 @@ public class User {
     private Integer token;
 
     @Column(name = "USER_LOCKED")
-    private boolean isUserLocked;
+    private boolean locked = false;
 
     @Column(name = "TOKEN_CREATION_TIME")
     private LocalDateTime tokenCreationTime;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
 
     @OneToMany(targetEntity = Order.class,
             mappedBy = "user",
@@ -57,3 +60,4 @@ public class User {
         this.address = address;
     }
 }
+

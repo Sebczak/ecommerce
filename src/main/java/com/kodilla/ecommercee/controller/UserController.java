@@ -22,12 +22,12 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<UserResponse>> getAllUsers(@RequestParam Integer token) {
+    public ResponseEntity<List<UserResponse>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getUser(@PathVariable Long id, @RequestParam Integer token) throws UserNotFoundException {
+    public ResponseEntity<UserResponse> getUser(@PathVariable Long id) throws UserNotFoundException {
         return ResponseEntity.ok(userService.getUser(id));
     }
 
@@ -42,17 +42,17 @@ public class UserController {
     }
 
     @PutMapping
-    public ResponseEntity<UserResponse> updateUser(@RequestBody UpdateUserRequest updateUserRequest, @RequestParam Integer token) throws UserNotFoundException, UsernameAlreadyExistsException, NullValueException {
+    public ResponseEntity<UserResponse> updateUser(@RequestBody UpdateUserRequest updateUserRequest) throws UserNotFoundException, UsernameAlreadyExistsException, NullValueException {
         return ResponseEntity.ok(userService.updateUser(updateUserRequest));
     }
 
     @PutMapping("/lock")
-    public ResponseEntity<UserLockedResponse> lockUser(@RequestBody LockUserRequest lockUserRequest, @RequestParam Integer token) throws UserNotFoundException, NullValueException {
+    public ResponseEntity<UserLockedResponse> lockUser(@RequestBody LockUserRequest lockUserRequest) throws UserNotFoundException, NullValueException {
         return ResponseEntity.ok(userService.lockUser(lockUserRequest));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id, @RequestParam Integer token) throws UserNotFoundException {
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) throws UserNotFoundException {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }

@@ -1,6 +1,5 @@
 package com.kodilla.ecommercee.entity;
 
-import com.kodilla.ecommercee.entity.enums.OrderStatus;
 import com.kodilla.ecommercee.repository.CartRepository;
 import com.kodilla.ecommercee.repository.OrderRepository;
 import com.kodilla.ecommercee.repository.UserRepository;

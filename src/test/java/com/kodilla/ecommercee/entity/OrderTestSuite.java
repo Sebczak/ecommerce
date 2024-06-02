@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.kodilla.ecommercee.entity.enums.OrderStatus.PAID;
-import static com.kodilla.ecommercee.entity.enums.OrderStatus.UNPAID;
+import static com.kodilla.ecommercee.entity.OrderStatus.PAID;
+import static com.kodilla.ecommercee.entity.OrderStatus.UNPAID;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest

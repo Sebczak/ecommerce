@@ -1,6 +1,5 @@
 package com.kodilla.ecommercee.entity;
 
-import com.kodilla.ecommercee.entity.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,3 +44,4 @@ public class Order {
         this.cart = cart;
     }
 }
+

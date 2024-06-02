@@ -2,7 +2,6 @@ package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.dto.request.UpdateOrderRequest;
 import com.kodilla.ecommercee.dto.response.OrderResponse;
-import com.kodilla.ecommercee.entity.enums.OrderStatus;
 import com.kodilla.ecommercee.exception.NullValueException;
 import com.kodilla.ecommercee.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -19,29 +18,25 @@ public class OrderController {
     private final OrderService service;
 
     @GetMapping
-    public ResponseEntity<List<OrderResponse>> getAllOrders(@RequestParam Integer token) {
+    public ResponseEntity<List<OrderResponse>> getAllOrders() {
         List<OrderResponse> orders = service.getAllOrders();
         return ResponseEntity.ok(orders);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderResponse> getOrder(@PathVariable Long id, @RequestParam Integer token) {
+    public ResponseEntity<OrderResponse> getOrder(@PathVariable Long id) {
         return ResponseEntity.ok(service.getOrder(id));
     }
 
     @PutMapping
-    public ResponseEntity<String> updateOrder(@RequestBody UpdateOrderRequest updateOrderRequest, @RequestParam Integer token) {
-        try {
+    public ResponseEntity<OrderResponse> updateOrder(@RequestBody UpdateOrderRequest updateOrderRequest) throws NullValueException {
             OrderResponse orderResponse = service.updateOrder(updateOrderRequest);
-            String message = orderResponse.status() == OrderStatus.PAID ? "Order paid" : "Order unpaid";
-            return ResponseEntity.ok(message);
-        } catch (NullValueException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+            return ResponseEntity.ok(orderResponse);
+
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteOrder(@PathVariable Long id, @RequestParam Integer token) {
+    public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
         service.deleteOrder(id);
         return ResponseEntity.noContent().build();
     }
